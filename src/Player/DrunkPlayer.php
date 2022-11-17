@@ -10,6 +10,16 @@ class DrunkPlayer implements PlayerInterface
 {
     public function guessLetter(State $state): string
     {
-        return 'a';
+        static $previousLetter;
+
+        do {
+            $az = "abcdefghijklmnopqrstuvwxyz";
+            $int = random_int(0, strlen($az) - 1);
+            $letter = $az[$int];
+        } while ($previousLetter === $letter);
+
+        $previousLetter = $letter;
+
+        return $letter;
     }
 }

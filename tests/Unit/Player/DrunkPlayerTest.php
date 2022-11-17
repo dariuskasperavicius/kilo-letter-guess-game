@@ -15,5 +15,8 @@ class DrunkPlayerTest extends TestCase
         $letter = $player->guessLetter($state);
         $this->assertIsString($letter);
         $this->assertSame(strlen($letter), 1);
+
+        $letter2 = $player->guessLetter($state);
+        $this->assertNotSame($letter, $letter2);
     }
 }
