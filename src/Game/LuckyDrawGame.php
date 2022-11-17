@@ -11,6 +11,7 @@ class LuckyDrawGame
 {
     private array $players = [];
     private State $state;
+    private ?string $winner = null;
 
     public function __construct(State $state = null)
     {
@@ -21,16 +22,16 @@ class LuckyDrawGame
         $this->state = $state ?? State::fromWord($secret);
     }
 
-    public function addPlayer(PlayerInterface $player)
+    public function addPlayer(PlayerInterface|callable $player, $nick)
     {
-        $this->players[] = $player;
+        $this->players[$nick] = $player;
     }
 
     public function makeTurn(): State
     {
-        /** @var PlayerInterface $player */
-        foreach ($this->players as $player) {
-            $this->state->addLetter($player->guessLetter($this->state));
+        /** @var PlayerInterface|callable $player */
+        foreach ($this->players as $nickName => $player) {
+            $this->state->addLetter($player($this->state));
         }
         return $this->state;
     }
@@ -40,5 +41,14 @@ class LuckyDrawGame
         return $this->state->isFinished();
     }
 
+    public function getWinner(): ?string
+    {
+        return $this->winner;
+    }
 
+    public function setWinner(?string $winner): LuckyDrawGame
+    {
+        $this->winner = $winner;
+        return $this;
+    }
 }

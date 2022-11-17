@@ -9,7 +9,7 @@ use App\Player\PlayerInterface;
 
 class FakePlayer implements PlayerInterface
 {
-    public function guessLetter(State $state): string
+    public function __invoke(State $state): string
     {
         return 'h';
     }

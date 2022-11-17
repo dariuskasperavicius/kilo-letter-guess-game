@@ -8,7 +8,7 @@ use App\Game\State;
 
 class DrunkPlayer implements PlayerInterface
 {
-    public function guessLetter(State $state): string
+    public function __invoke(State $state): string
     {
         static $previousLetter;
 
