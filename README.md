@@ -1,4 +1,6 @@
-`1. Write a letter guessing game classes
+## TDD & Live Coding
+
+1. Write a letter guessing game classes
 2. Write a simple test, which would allow play empty round
 3. We should be able to add at least a three players: 
 - drunk - guesses the letters even if they are guessed
@@ -6,7 +8,9 @@
 - smart - guesses letters by popularity
 4. Write another tests, which would add ability to play round and test to win the game.
 5. Write the code for this
-6. Make this game autplay
+
+## Architecture, infrastructure and Live coding
+6. Make this game autoplay. Write a test. We will need a command with game output.
 7. New feature came: let's make a cli player, which asks for letter and we can enter it and let us play with bots
 8. Can we add a undo function? If we want, we can undo our move.
 9. New features came in. Our clients wants to make the code memorable. We can quit the game and continue.

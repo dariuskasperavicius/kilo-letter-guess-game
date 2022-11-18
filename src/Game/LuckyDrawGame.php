@@ -32,6 +32,10 @@ class LuckyDrawGame
         /** @var PlayerInterface|callable $player */
         foreach ($this->players as $nickName => $player) {
             $this->state->addLetter($player($this->state));
+            if ($this->state->isFinished()) {
+                $this->setWinner($nickName);
+                break;
+            }
         }
         return $this->state;
     }
