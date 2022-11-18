@@ -10,7 +10,7 @@ use JetBrains\PhpStorm\Pure;
 class LuckyDrawGame
 {
     private array $players = [];
-    private State $state;
+    private ?State $state;
     private ?string $winner = null;
 
     public function __construct(State $state = null)
@@ -22,7 +22,7 @@ class LuckyDrawGame
         $this->state = $state ?? State::fromWord($secret);
     }
 
-    public function addPlayer(PlayerInterface|callable $player, $nick)
+    public function addPlayer(PlayerInterface|callable $player, $nick): void
     {
         $this->players[$nick] = $player;
     }

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Player;
 
 use App\Game\State;
+use Exception;
 
 class DrunkPlayer implements PlayerInterface
 {
@@ -14,7 +15,11 @@ class DrunkPlayer implements PlayerInterface
 
         do {
             $az = "abcdefghijklmnopqrstuvwxyz";
-            $int = random_int(0, strlen($az) - 1);
+            try {
+                $int = random_int(0, strlen($az) - 1);
+            } catch (Exception) {
+                $int = 0;
+            }
             $letter = $az[$int];
         } while ($previousLetter === $letter);
 

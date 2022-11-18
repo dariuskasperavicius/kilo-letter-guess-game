@@ -4,18 +4,13 @@ declare(strict_types=1);
 
 namespace App\Game;
 
+use JetBrains\PhpStorm\ArrayShape;
 use JetBrains\PhpStorm\Pure;
+use JsonSerializable;
 
-class State
+class State implements JsonSerializable
 {
     private const MASKED_SYMBOL = '_';
-
-    public function __construct(
-        private array $secret,
-        private array $masked_word = []
-    )
-    {
-    }
 
     #[Pure] public static function fromWord(string $word): State
     {
@@ -32,24 +27,46 @@ class State
         $i = 0;
         foreach ($this->secret as $secretLetter) {
             if ($secretLetter === $letter) {
-                $this->masked_word[$i] = $letter;
+                $this->masked_array[$i] = $letter;
             }
             $i++;
         }
     }
 
-    public function getMaskedWord(): array
+    #[Pure]
+    private function getMaskedWord(): string
     {
-        return $this->masked_word;
+        return implode(' ', $this->getMaskedArray());
+    }
+
+    public function getMaskedArray(): array
+    {
+        return $this->masked_array;
     }
 
     #[Pure] public function isFinished(): bool
     {
-        return $this->getMaskedWord() === $this->getSecret();
+        return $this->getMaskedArray() === $this->getSecret();
+    }
+
+    private function __construct(
+        private array $secret,
+        private array $masked_array = []
+    )
+    {
     }
 
     private function getSecret(): array
     {
         return $this->secret;
+    }
+
+    #[Pure]
+    #[ArrayShape(['masked_word' => "string"])]
+    public function jsonSerialize(): array
+    {
+        return [
+            'masked_word' => $this->getMaskedWord()
+        ];
     }
 }
