@@ -8,5 +8,7 @@ use App\Game\State;
 
 interface PlayerInterface
 {
+    public const PLAYER_HTTP_NAME = 'Online player';
+
     public function __invoke(State $state): string;
 }

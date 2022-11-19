@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Game;
 
+use App\Model\StateModel;
 use JetBrains\PhpStorm\ArrayShape;
 use JetBrains\PhpStorm\Pure;
 use JsonSerializable;
@@ -12,7 +13,17 @@ class State implements JsonSerializable
 {
     private const MASKED_SYMBOL = '_';
 
-    #[Pure] public static function fromWord(string $word): State
+    #[Pure]
+    public static function fromModel(StateModel $model): State
+    {
+        return new self(
+            str_split($model->getSecret()),
+            str_split($model->getMasked())
+        );
+    }
+
+    #[Pure]
+    public static function fromWord(string $word): State
     {
         $secret = str_split($word);
 
@@ -25,7 +36,7 @@ class State implements JsonSerializable
     public function addLetter(string $letter): void
     {
         $i = 0;
-        foreach ($this->secret as $secretLetter) {
+        foreach ($this->secretArray as $secretLetter) {
             if ($secretLetter === $letter) {
                 $this->masked_array[$i] = $letter;
             }
@@ -34,9 +45,9 @@ class State implements JsonSerializable
     }
 
     #[Pure]
-    private function getMaskedWord(): string
+    private function getMaskedWord(string $separator = ''): string
     {
-        return implode(' ', $this->getMaskedArray());
+        return implode($separator, $this->getMaskedArray());
     }
 
     public function getMaskedArray(): array
@@ -46,27 +57,40 @@ class State implements JsonSerializable
 
     #[Pure] public function isFinished(): bool
     {
-        return $this->getMaskedArray() === $this->getSecret();
+        return $this->getMaskedArray() === $this->getSecretArray();
     }
 
     private function __construct(
-        private array $secret,
+        private array $secretArray,
         private array $masked_array = []
     )
     {
     }
 
-    private function getSecret(): array
+    private function getSecretArray(): array
     {
-        return $this->secret;
+        return $this->secretArray;
     }
 
-    #[Pure]
+    private function getSecretWord(): string
+    {
+        return implode(' ', $this->getSecretArray());
+    }
+
     #[ArrayShape(['masked_word' => "string"])]
     public function jsonSerialize(): array
     {
         return [
-            'masked_word' => $this->getMaskedWord()
+            'masked_word' => $this->getMaskedWord(' ')
+        ];
+    }
+
+    #[ArrayShape(['masked' => "string", 'secret' => "string"])]
+    public function dump(): array
+    {
+        return [
+            'masked' => $this->getMaskedWord(),
+            'secret' => $this->getSecretWord()
         ];
     }
 }

@@ -7,7 +7,7 @@ namespace App\Game;
 use App\Player\PlayerInterface;
 use JetBrains\PhpStorm\Pure;
 
-class LuckyDrawGame
+class LuckyDrawGame implements GameInterface
 {
     private array $players = [];
     private ?State $state;
@@ -50,9 +50,8 @@ class LuckyDrawGame
         return $this->winner;
     }
 
-    public function setWinner(?string $winner): LuckyDrawGame
+    private function setWinner(string $winner): void
     {
         $this->winner = $winner;
-        return $this;
     }
 }
