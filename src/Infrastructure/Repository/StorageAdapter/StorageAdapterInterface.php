@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repository\StorageAdapter;
+namespace App\Infrastructure\Repository\StorageAdapter;
 
 interface StorageAdapterInterface
 {

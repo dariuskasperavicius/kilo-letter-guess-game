@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Player;
+namespace App\Domain\Player;
 
-use App\Game\State;
+use App\Domain\Game\State;
 use Exception;
 
 class DrunkPlayer implements PlayerInterface

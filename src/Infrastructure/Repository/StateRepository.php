@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Repository;
+namespace App\Infrastructure\Repository;
 
-use App\Model\StateModel;
-use App\Repository\StorageAdapter\StorageAdapterInterface;
+use App\Infrastructure\Model\StateModel;
+use App\Infrastructure\Repository\StorageAdapter\StorageAdapterInterface;
 
 class StateRepository implements StateRepositoryInterface
 {

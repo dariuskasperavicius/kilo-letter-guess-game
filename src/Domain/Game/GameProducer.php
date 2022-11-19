@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Game;
+namespace App\Domain\Game;
 
-use App\Model\StateModel;
-use App\Repository\StateRepositoryInterface;
+use App\Infrastructure\Model\StateModel;
+use App\Infrastructure\Repository\StateRepositoryInterface;
 
 final class GameProducer
 {

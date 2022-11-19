@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit;
 
-use App\Game\State;
-use App\Player\PlayerInterface;
+use App\Domain\Game\State;
+use App\Domain\Player\PlayerInterface;
 
 class FakePlayer implements PlayerInterface
 {

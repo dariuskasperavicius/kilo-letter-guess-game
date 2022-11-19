@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Repository\StorageAdapter;
+namespace App\Infrastructure\Repository\StorageAdapter;
 
 use Predis\Client;
 

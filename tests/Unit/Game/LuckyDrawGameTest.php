@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\Game;
 
-use App\Game\LuckyDrawGame;
-use App\Game\State;
+use App\Domain\Game\LuckyDrawGame;
+use App\Domain\Game\State;
 use App\Tests\Unit\FakePlayer;
 use PHPUnit\Framework\TestCase;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Game;
+namespace App\Domain\Game;
 
-use App\Player\PlayerInterface;
+use App\Domain\Player\PlayerInterface;
 
 interface GameInterface
 {

@@ -2,8 +2,8 @@
 
 namespace App\Tests\Unit\Player;
 
-use App\Game\State;
-use App\Player\DrunkPlayer;
+use App\Domain\Game\State;
+use App\Domain\Player\DrunkPlayer;
 use PHPUnit\Framework\TestCase;
 
 class DrunkPlayerTest extends TestCase

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Game;
+namespace App\Domain\Game;
 
-use App\Player\PlayerInterface;
+use App\Domain\Player\PlayerInterface;
 use JetBrains\PhpStorm\Pure;
 
 class LuckyDrawGame implements GameInterface
