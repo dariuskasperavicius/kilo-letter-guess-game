@@ -1,3 +1,5 @@
+# Requirements
+
 ## TDD & Live Coding
 
 1. Write a letter guessing game classes
@@ -17,3 +19,8 @@
 10. Finally, everybody was happy with a game, how we would add http client? 
 11. And api for the game to display it on the screen?
 12. Now as we have many layers, how it will be different in layered architecture, clean and hexagonal?`
+
+
+#Setup
+docker run --name demo -p 6379:6379 redis
+docker start demo
