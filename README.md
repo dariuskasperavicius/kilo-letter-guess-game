@@ -24,3 +24,12 @@
 #Setup
 docker run --name demo -p 6379:6379 redis
 docker start demo
+
+
+## Theory
+
+### Clean architecture
+Controller(Request)
+⤷ Interactor(RequestModel)
+⤷ Presenter(ResponseModel)
+⤷ ViewModel

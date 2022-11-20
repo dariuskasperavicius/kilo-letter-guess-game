@@ -13,11 +13,9 @@
         "symfony/flex": "^2",
         "symfony/framework-bundle": "6.1.*",
         "symfony/runtime": "6.1.*",
-        "symfony/yaml": "6.1.*"
-    },
-    "require-dev": {
-        "roave/security-advisories": "dev-latest",
+        "symfony/yaml": "6.1.*",
         "phpunit/phpunit": "^9.5",
+        "roave/security-advisories": "dev-latest",
         "symfony/phpunit-bridge": "^6.1"
     },
     "config": {
@@ -71,5 +69,8 @@
             "allow-contrib": false,
             "require": "6.1.*"
         }
+    },
+    "require-dev": {
+        "symfony/browser-kit": "6.1.*"
     }
 }
