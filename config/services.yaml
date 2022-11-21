@@ -20,9 +20,6 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
 
-    App\Infrastructure\Repository\StateRepositoryInterface:
-        public: true
-
     App\Domain\UseCase\Turn\TurnOutputPortInterface: '@App\Domain\Adapter\Presenter\TurnJsonPresenter'
 
     # add more service definitions when explicit configuration is needed
