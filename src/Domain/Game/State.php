@@ -45,7 +45,7 @@ class State implements JsonSerializable
     }
 
     #[Pure]
-    private function getMaskedWord(string $separator = ''): string
+    public function getMaskedWord(string $separator = ''): string
     {
         return implode($separator, $this->getMaskedArray());
     }

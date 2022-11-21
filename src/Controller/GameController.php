@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Domain\Game\GameInterface;
-use App\Domain\Game\GameProducer;
+use App\Domain\Game\GameInteractor;
+use App\Domain\UseCase\Turn\TurnRequestModel;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,14 +16,20 @@ class GameController extends AbstractController
 {
     private GameInterface $game;
 
-    public function __construct(private GameProducer $gameEngine)
+    public function __construct(private GameInteractor $interactor)
     {
-        $this->game = $gameEngine->produce();
     }
 
     #[Route('/turn', name: 'game_turn')]
     public function makeTurn(Request $request): JsonResponse
     {
+
+        $viewModel = $this->interactor->turn(
+            new TurnRequestModel($request)
+        );
+
+        return $viewModel->getResponse();
+
         $this->game->addPlayer(
             function () use ($request) {
                 return $request->get('letter');
@@ -31,7 +38,7 @@ class GameController extends AbstractController
         );
 
         $state = $this->game->makeTurn();
-        $this->gameEngine->store($state);
+        $this->interactor->store($state);
 
         return new JsonResponse($state);
     }
