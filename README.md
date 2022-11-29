@@ -17,3 +17,6 @@
 10. Finally, everybody was happy with a game, how we would add http client? 
 11. And api for the game to display it on the screen?
 12. Now as we have many layers, how it will be different in layered architecture, clean and hexagonal?`
+
+## Run game
+`bin/console g:a sober drunk`
