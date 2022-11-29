@@ -22,7 +22,7 @@ class LuckyDrawGame
         $this->state = $state ?? State::fromWord($secret);
     }
 
-    public function addPlayer(PlayerInterface|callable $player, $nick)
+    public function addPlayer(PlayerInterface|callable $player, $nick): void
     {
         $this->players[$nick] = $player;
     }
@@ -40,6 +40,13 @@ class LuckyDrawGame
         return $this->state;
     }
 
+    public function autoplay(): void
+    {
+        do {
+            $this->makeTurn();
+        } while ($this->getWinner() === null);
+    }
+    
     #[Pure] public function isFinished(): bool
     {
         return $this->state->isFinished();
