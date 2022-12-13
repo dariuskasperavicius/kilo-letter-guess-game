@@ -13,12 +13,15 @@
 
 ## Architecture, infrastructure and Live coding
 6. Make this game autoplay. Write a test. We will need a command with game output.
-7. New feature came: let's make a cli player, which asks for letter and we can enter it and let us play with bots
-8. Can we add a undo function? If we want, we can undo our move.
-9. New features came in. Our clients wants to make the code memorable. We can quit the game and continue.
-10. Finally, everybody was happy with a game, how we would add http client? 
-11. And api for the game to display it on the screen?
-12. Now as we have many layers, how it will be different in layered architecture, clean and hexagonal?`
+7. Finally, everybody was happy with a game, how we would add http client?
+8. Now as we have many layers, how it will be different in layered architecture, clean and hexagonal?`
+9. ---> New feature came: let's make a cli player, which asks for letter and we can enter it and let us play with bots
+10. Can we add a undo function? If we want, we can undo our move.
+11. New features came in. Our clients wants to make the code memorable. We can quit the game and continue.
+
+Optional:
+12. And api for the game to display it on the screen?
+
 
 
 #Setup

@@ -4,14 +4,15 @@ declare(strict_types=1);
 
 namespace App\Service;
 
+use App\Player\DrunkPlayer;
 use App\Player\PlayerInterface;
 
 class PlayerRegistry
 {
-    public function __construct(private array $players)
+    public function __construct(private array $players = [])
     {
         $this->players = [
-
+            'drunk' => new DrunkPlayer()
         ];
     }
 
